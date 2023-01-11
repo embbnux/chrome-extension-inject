@@ -1,0 +1,33 @@
+{
+  "name": "Inject",
+  "description": "A app to inject css into some web app",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*"],
+      "css": [
+        "inject.css"
+      ],
+      "js": [
+        "inject.js"
+      ],
+      "all_frames": true
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "action": {
+    "default_title": "CSS Inject",
+    "default_icon": "icon.png"
+  }
+}
